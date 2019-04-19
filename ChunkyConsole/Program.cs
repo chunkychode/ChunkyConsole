@@ -10,7 +10,7 @@ namespace ChunkyConsole
     {
         static void Main(string[] args)
         {
-
+            // Create the items to be shown 
             UI.Menu m = new UI.Menu();
             m.MenuItems.Add(new UI.MenuItem() { Title = "Misc", Key = ConsoleKey.D1, Command = new command1() });
             m.MenuItems.Add(new UI.MenuItem() { Title = "Date Time", Key = ConsoleKey.D2, Command = new command2() });
