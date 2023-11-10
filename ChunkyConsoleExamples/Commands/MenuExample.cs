@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Tester.commands
+namespace ChunkyConsoleExamples.Commands
 {
-    class MenuExample:ChunkyConsole.Commands.MenuCommand
+    class MenuExample : ChunkyConsole.Commands.MenuCommand
     {
-        public MenuExample():base()
+        public MenuExample() : base()
         {
             this.Order = ChunkyConsole.Commands.ExecuteOrder.BeforeMenu;
             this.MenuOrder = ChunkyConsole.Commands.MenuOrder.none;
@@ -29,7 +25,7 @@ namespace Tester.commands
         public override void Execute()
         {
             Console.WriteLine("In Execute");
-            Console.Read();            
+            Console.Read();
         }
     }
 }

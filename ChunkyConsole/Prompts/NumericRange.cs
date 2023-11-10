@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 
 namespace ChunkyConsole.Prompts
@@ -21,6 +18,5 @@ namespace ChunkyConsole.Prompts
     public class LongRange : NumericRange<long> { public LongRange(long min, long max) : base(min, max) { } }
     public class DecimalRange : NumericRange<decimal> { public DecimalRange(decimal min, decimal max) : base(min, max) { } }
     public class FloatRange : NumericRange<float> { public FloatRange(float min, float max) : base(min, max) { } }
-
 
 }

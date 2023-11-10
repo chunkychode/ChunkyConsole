@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Tester.commands
+
+namespace ChunkyConsoleExamples.Commands
 {
-
     class ReflectionExample : ChunkyConsole.Commands.ReflectionMenuPrompterCommand
     {
         [ChunkyConsole.IncludeMethod]
@@ -33,7 +30,7 @@ namespace Tester.commands
         public ReflectionExample()
             : base()
         {
-            base.Prompter.First(f=>f.Prompt=="MyFiledProperty").Validator = new ChunkyConsole.Validators.File(true);
+            base.Prompter.First(f => f.Prompt == "MyFiledProperty").Validator = new ChunkyConsole.Validators.File(true);
             base.Prompter.First(f => f.Prompt == "MyFiledProperty").ErrorPrompt = "File must exist";
 
 

@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 
 namespace ChunkyConsole.Prompts
 {
-    public delegate void OnAfterPromptEventHandler(Prompter source, PromptItem item,  ref bool cancel);
-    public delegate void OnPromptsCompleteEventHandler(Prompter source,  bool result);
+    public delegate void OnAfterPromptEventHandler(Prompter source, PromptItem item, ref bool cancel);
+    public delegate void OnPromptsCompleteEventHandler(Prompter source, bool result);
     public class Prompter : System.Collections.Generic.LinkedList<PromptItem>
     {
 
         public event OnAfterPromptEventHandler OnAfterPropmt;
         public event OnPromptsCompleteEventHandler OnPropmtsComplete;
-        public Prompter():base(){}
-        
+        public Prompter() : base() { }
+
         public string UserValue(int index)
         {
             return this.Skip(index - 1).Take(1).FirstOrDefault().UserValue;
@@ -32,7 +30,7 @@ namespace ChunkyConsole.Prompts
             if (thisone != null)
             {
                 var retthisval = (thisone.Validator as Validators.IValue<T>);
-                if(retthisval!=null)
+                if (retthisval != null)
                     return retthisval.Value;
 
                 throw new InvalidCastException(string.Format("{0} is not of type {1}", name, typeof(T).FullName));
@@ -99,7 +97,7 @@ namespace ChunkyConsole.Prompts
         public override string ToString()
         {
             return (from a in this
-             select a.ToString()).Aggregate((a, b) => a += "\r\n" + b);
+                    select a.ToString()).Aggregate((a, b) => a += "\r\n" + b);
         }
     }
 }

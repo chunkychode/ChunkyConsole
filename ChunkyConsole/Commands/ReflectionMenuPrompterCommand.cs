@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+
 
 namespace ChunkyConsole.Commands
 {
@@ -22,7 +22,7 @@ namespace ChunkyConsole.Commands
             }
         }
 
-        public ReflectionMenuPrompterCommand(Commands.MenuOrder menuOrder = Commands.MenuOrder.AfterPrompt, bool includeOnlyAttributedMembers = true, bool AutoAdd=true)
+        public ReflectionMenuPrompterCommand(Commands.MenuOrder menuOrder = Commands.MenuOrder.AfterPrompt, bool includeOnlyAttributedMembers = true, bool AutoAdd = true)
         {
             _includeOnlyAttributedMembers = includeOnlyAttributedMembers;
 
@@ -47,13 +47,14 @@ namespace ChunkyConsole.Commands
                     return pp.GetValue(this, null).ToString();
                 }
                 catch { return ""; }
-                ;});
+                ;
+            });
 
             foreach (var pr in (from m in this.GetType().GetProperties()
                                 let atts = m.GetCustomAttributes(typeof(IncludeMethodAttribute), false)
                                 where includeOnlyAttributedMembers ? (atts != null && atts.Count() > 0) : true
                                 let v = GetV(m)
-                                select new {va =v, pi = m, pwd = includeOnlyAttributedMembers ? (atts[0] as IncludeMethodAttribute).IsPassword : false }))
+                                select new { va = v, pi = m, pwd = includeOnlyAttributedMembers ? (atts[0] as IncludeMethodAttribute).IsPassword : false }))
             {
                 Add(pr.pi, this, pr.pwd, pr.va);
             }
@@ -66,7 +67,7 @@ namespace ChunkyConsole.Commands
             foreach (var mem in (GetMethods(includeOnlyAttributedMembers)))
             {
                 var newcmd = new Commands.DynamicPrompterCommand(mem, this);
-                
+
                 AddMemberParamPrompts(mem, newcmd);
 
                 Add(mem.Name, ConsoleKey.D0 + this.Menu.MenuItems.Count, newcmd);
@@ -87,7 +88,7 @@ namespace ChunkyConsole.Commands
                    where includeOnlyAttributedMembers ? (atts != null && atts.Count() > 0) : true
                    select m;
         }
-        public override void Execute(){}
+        public override void Execute() { }
 
     }
 }

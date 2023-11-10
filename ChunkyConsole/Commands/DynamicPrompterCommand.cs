@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using System.Linq;
 
 namespace ChunkyConsole.Commands
 {
@@ -25,7 +21,7 @@ namespace ChunkyConsole.Commands
             get
             {
                 return (from p in this.Prompter
-                        select p.Validator.GetType().GetProperty("Value").GetValue(p.Validator,null)).ToArray<object>();
+                        select p.Validator.GetType().GetProperty("Value").GetValue(p.Validator, null)).ToArray<object>();
             }
         }
 

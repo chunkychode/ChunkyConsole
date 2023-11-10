@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-
+﻿
 namespace ChunkyConsole.Prompts
 {
     public class PromptItem : IPrompt
@@ -23,5 +18,4 @@ namespace ChunkyConsole.Prompts
         }
 
     }
-
 }
