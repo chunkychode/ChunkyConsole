@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
 
 namespace ChunkyConsole.Commands
 {
@@ -37,7 +34,7 @@ namespace ChunkyConsole.Commands
             Prompter.AddLast(new Prompts.PromptItem() { DefaultValue = defaultValue, ErrorPrompt = string.IsNullOrEmpty(errorPrompt) ? validator.ErrorMessage : errorPrompt, Prompt = prompt, Validator = validator, IsPassword = isPassword });
         }
 
-        protected void Add(System.Reflection.PropertyInfo prop, object source, bool isPassword = false, string defaultValue="")
+        protected void Add(System.Reflection.PropertyInfo prop, object source, bool isPassword = false, string defaultValue = "")
         {
             Add(prop.Name, defaultValue, string.Empty, null, isPassword);
             var added = Prompter.First(f => f.Prompt == prop.Name);

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Tester.commands
+namespace ChunkyConsoleExamples.Commands
 {
-    class ClassExample:ChunkyConsole.Commands.ReflectionMenuPrompterCommand
+    class ClassExample : ChunkyConsole.Commands.ReflectionMenuPrompterCommand
     {
 
         public int DontPromptDays { get; set; }
@@ -22,7 +18,7 @@ namespace Tester.commands
         [ChunkyConsole.IncludeMethod]
         public bool SomeBool { get; set; }
 
-        public ClassExample():base()
+        public ClassExample() : base()
         {
             this.MenuOrder = ChunkyConsole.Commands.MenuOrder.AfterPrompt;
         }

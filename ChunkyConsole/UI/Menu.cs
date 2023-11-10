@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace ChunkyConsole.UI
 {
     public class Menu
     {
         public List<MenuItem> MenuItems { get; set; }
-        private int Longest { get { return MenuItems.Count>0 ? MenuItems.Max(m => m.Title.Length) : 0; } }
+        private int Longest { get { return MenuItems.Count > 0 ? MenuItems.Max(m => m.Title.Length) : 0; } }
         public bool ShowBorder { get; set; }
         public bool CenterHor { get; set; }
         public bool ExitOnBadSelection { get; set; }
@@ -17,7 +16,7 @@ namespace ChunkyConsole.UI
         public char BorderCharecter { get; set; }
         public ConsoleColor ForeColor { get; set; }
         public ConsoleColor BackColor { get; set; }
-        
+
 
         public Menu()
         {
@@ -56,7 +55,7 @@ namespace ChunkyConsole.UI
                     break;
 
             } while (ShowOnce ? false : true);
-            
+
 
 
         }
@@ -136,7 +135,7 @@ namespace ChunkyConsole.UI
 
             }
 
-            if (mi != null && mi.Command!=null)
+            if (mi != null && mi.Command != null)
             {
                 if (mi.Command is Commands.IHasPrompter && (mi.Command as Commands.IHasPrompter).KeepLastAnswers)
                     (mi.Command as Commands.IHasPrompter).Prompter.All(p => { p.DefaultValue = p.UserValue; return true; });

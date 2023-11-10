@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 
 namespace ChunkyConsole.Commands
@@ -26,7 +23,7 @@ namespace ChunkyConsole.Commands
         /// <param name="defaultValue"></param>
         /// <param name="errorPrompt"></param>
         /// <param name="validator"></param>
-        protected void Add(string prompt, string defaultValue, string errorPrompt, Validators.IValidator  validator=null, bool isPassword = false)
+        protected void Add(string prompt, string defaultValue, string errorPrompt, Validators.IValidator validator = null, bool isPassword = false)
         {
             if (validator == null)
                 validator = Validators.BaseValidator<string>.InstanceByType(this, prompt);
@@ -44,9 +41,9 @@ namespace ChunkyConsole.Commands
         /// <param name="prompt"></param>
         protected void Add(string prompt, bool isPassword = false)
         {
-            Add(prompt, string.Empty, string.Empty,null,isPassword);
-        }        
-        
+            Add(prompt, string.Empty, string.Empty, null, isPassword);
+        }
+
         /// <summary>
         /// Adds a Prompt
         /// </summary>
@@ -65,10 +62,10 @@ namespace ChunkyConsole.Commands
         /// <param name="validator"></param>
         protected void Add(string prompt, Validators.IValidator validator, bool isPassword = false)
         {
-            Add(prompt, string.Empty, validator.ErrorMessage, validator,isPassword);
+            Add(prompt, string.Empty, validator.ErrorMessage, validator, isPassword);
         }
 
-        
+
         /// <summary>
         /// Adds a Prompt
         /// </summary>
