@@ -35,15 +35,15 @@ namespace ChunkyConsoleExamples.Commands
             Console.ReadKey();
         }
         [ChunkyConsole.IncludeMethod]
-        public void PrintDaysAlive(DateTime birthdate, bool IncludeStff)
+        public void PrintDaysAlive(DateTime birthdate, bool IncludeStuff)
         {
             Console.WriteLine("you entered: " + birthdate);
-            Console.WriteLine("you included: " + IncludeStff);
+            Console.WriteLine("you included: " + IncludeStuff);
             Console.WriteLine(DateTime.Now.Subtract(birthdate).TotalDays);
             Console.ReadKey();
         }
         [ChunkyConsole.IncludeMethod]
-        public void Printrandomnumber()
+        public void PrintRandomNumber()
         {
             Console.WriteLine(new Random().Next());
             Console.ReadKey();

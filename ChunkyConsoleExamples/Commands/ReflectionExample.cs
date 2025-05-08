@@ -7,7 +7,7 @@ namespace ChunkyConsoleExamples.Commands
     class ReflectionExample : ChunkyConsole.Commands.ReflectionMenuPrompterCommand
     {
         [ChunkyConsole.IncludeProperty]
-        public string MyFiledProperty { get; set; }
+        public string MyFileProperty { get; set; }
         [ChunkyConsole.IncludeProperty]
         public string MyStringProperty { get; set; }
 
