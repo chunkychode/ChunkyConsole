@@ -30,8 +30,8 @@ namespace ChunkyConsoleExamples.Commands
         public ReflectionExample()
             : base()
         {
-            base.Prompter.First(f => f.Prompt == "MyFiledProperty").Validator = new ChunkyConsole.Validators.File(true);
-            base.Prompter.First(f => f.Prompt == "MyFiledProperty").ErrorPrompt = "File must exist";
+            base.Prompter.First(f => f.Prompt == "MyFileProperty").Validator = new ChunkyConsole.Validators.File(true);
+            base.Prompter.First(f => f.Prompt == "MyFileProperty").ErrorPrompt = "File must exist";
 
 
         }
@@ -42,7 +42,7 @@ namespace ChunkyConsoleExamples.Commands
             Console.WriteLine("you have assigned {0} to MyDecimalProperty", MyDecimalProperty);
             Console.WriteLine("you have assigned {0} to MyDateProperty", MyDateProperty);
             Console.WriteLine("you have assigned {0} to MyPasswordProperty", MyPasswordProperty);
-            Console.WriteLine("you have assigned {0} to MyFiledProperty", MyFiledProperty);
+            Console.WriteLine("you have assigned {0} to MyFileProperty", MyFileProperty);
 
 
             Console.Read();

@@ -15,7 +15,7 @@ namespace ChunkyConsole.Prompts
 
         public string UserValue(int index)
         {
-            return this.Skip(index - 1).Take(1).FirstOrDefault().UserValue;
+            return this.Skip(index).Take(1).FirstOrDefault().UserValue;
         }
         public T Get<T>(int index)
         {
