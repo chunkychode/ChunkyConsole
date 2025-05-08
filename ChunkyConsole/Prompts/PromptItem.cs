@@ -20,7 +20,7 @@ namespace ChunkyConsole.Prompts
                     throw new InvalidCastException(string.Format("{0} is not of type {1}", this.Prompt, typeof(T).FullName));
             }
         }
-        public new (bool Sucsess, PromptItem Item, T UserValue) PromptUser()
+        public new (bool Success, PromptItem Item, T UserValue) PromptUser()
         {
             var prompt = new Prompter();
             prompt.AddLast(this);
