@@ -9,7 +9,37 @@ namespace ChunkyConsole.Utils
         public static string LineFromUser(string prompr, string defaultValue = "", bool isPassword = false, bool useFileAutoComplete = false)
         {
             Console.Write(string.Format("{0}:{1}", prompr, string.IsNullOrEmpty(defaultValue) ? "" : "[" + defaultValue + "]"));
-            string sret = isPassword ? ReadPassword() : useFileAutoComplete ? ReadWithAutoComplete() : Console.ReadLine();
+
+            // Clear any existing input in the buffer
+            while (Console.KeyAvailable)
+            {
+                Console.ReadKey(intercept: true);
+            }
+
+            string sret = string.Empty;
+
+            if (isPassword)
+            {
+                sret = ReadPassword();
+            }
+            else if (useFileAutoComplete)
+            {
+                sret = ReadWithAutoComplete();
+            }
+            else
+            {
+                // Explicitly wait for user input
+                
+                    while (!Console.KeyAvailable)
+                    {
+                        // Wait for a key press
+                        System.Threading.Thread.Sleep(50); // Small delay to avoid busy-waiting
+                    }
+
+                    sret = Console.ReadLine();
+                
+            }
+
             return string.IsNullOrEmpty(sret) ? defaultValue : sret;
         }
 

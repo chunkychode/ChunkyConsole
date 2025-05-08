@@ -14,7 +14,7 @@ namespace ChunkyConsoleExamples.Commands
         }
         private void AddPrompts()
         {
-            Add("Must be a value from the System.DayOfWeek enum", new ChunkyConsole.Validators.Enum<System.DayOfWeek>());
+            Add("Please enter a day of the week", new ChunkyConsole.Validators.Enum<System.DayOfWeek>());
             Add<MyFakeProperties>();
             Add("How old are you", "12", new ChunkyConsole.Validators.IntRange(1, 90));
             Add("Please specify an existing directory", new ChunkyConsole.Validators.Directory(false, true));

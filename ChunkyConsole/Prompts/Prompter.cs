@@ -24,6 +24,10 @@ namespace ChunkyConsole.Prompts
 
             throw new ArgumentException("Index must in range and validator may not be null");
         }
+        public object GetByIndex(int index)
+        {
+            return this.Skip(index - 1).Take(1).FirstOrDefault().UserValue;
+        }
         public T Get<T>(string name)
         {
             var thisone = this.FirstOrDefault(f => f.Prompt.Equals(name, StringComparison.OrdinalIgnoreCase));

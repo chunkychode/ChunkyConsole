@@ -6,32 +6,33 @@ namespace ChunkyConsoleExamples.Commands
     {
 
         public int DontPromptDays { get; set; }
-        [ChunkyConsole.IncludeMethod]
+        [ChunkyConsole.IncludeProperty]
         public int SomeNumber { get; set; }
 
-        [ChunkyConsole.IncludeMethod(true)]
+        [ChunkyConsole.IncludeProperty(true)]
         public string SomeString { get; set; }
 
-        [ChunkyConsole.IncludeMethod]
+        [ChunkyConsole.IncludeProperty]
         public DateTime SomeDate { get; set; }
 
-        [ChunkyConsole.IncludeMethod]
+        [ChunkyConsole.IncludeProperty]
         public bool SomeBool { get; set; }
 
         public ClassExample() : base()
         {
             this.MenuOrder = ChunkyConsole.Commands.MenuOrder.AfterPrompt;
         }
+
+        public override void Execute()
+        {
+            PrintMyProperties();
+        }
+
         [ChunkyConsole.IncludeMethod]
         public void PrintTheDate()
         {
             Console.WriteLine("the date is:" + DateTime.Now.ToString());
-
-            Console.WriteLine("number: " + SomeNumber);
-            Console.WriteLine("bool: " + SomeBool);
-            Console.WriteLine("date: " + SomeDate);
-            Console.WriteLine("str: " + SomeString);
-            Console.Read();
+            Console.ReadKey();
         }
         [ChunkyConsole.IncludeMethod]
         public void PrintDaysAlive(DateTime birthdate, bool IncludeStff)
@@ -39,7 +40,30 @@ namespace ChunkyConsoleExamples.Commands
             Console.WriteLine("you entered: " + birthdate);
             Console.WriteLine("you included: " + IncludeStff);
             Console.WriteLine(DateTime.Now.Subtract(birthdate).TotalDays);
-            Console.Read();
+            Console.ReadKey();
+        }
+        [ChunkyConsole.IncludeMethod]
+        public void Printrandomnumber()
+        {
+            Console.WriteLine(new Random().Next());
+            Console.ReadKey();
+        }
+
+        [ChunkyConsole.IncludeMethod]
+        public void InvokeWithParameter(string name)
+        {
+            Console.WriteLine(new Random().Next() + name);
+            Console.ReadKey();
+        }
+
+        
+        public void PrintMyProperties()
+        {
+            Console.WriteLine("number: " + SomeNumber);
+            Console.WriteLine("bool: " + SomeBool);
+            Console.WriteLine("date: " + SomeDate);
+            Console.WriteLine("str: " + SomeString);
+            Console.ReadKey();
         }
     }
 }
