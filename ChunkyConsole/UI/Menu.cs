@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Text;
 
 namespace ChunkyConsole.UI
@@ -17,6 +19,43 @@ namespace ChunkyConsole.UI
         public ConsoleColor ForeColor { get; set; }
         public ConsoleColor BackColor { get; set; }
 
+        private static List<Type> getClassesFromAssembly(Assembly assembly)
+        {
+            var types = assembly.GetTypes();
+            var these = types
+                .Where(t => !t.IsAbstract && t.GetInterfaces().Contains(typeof(Commands.ICommand)))
+                .ToList();
+            return these;
+        }
+        private static ConsoleKey GetConsoleKeyFromFirstLetter(string input, Dictionary<string, ConsoleKey> keyMap)
+        {
+            if (string.IsNullOrEmpty(input))
+                return ConsoleKey.F1; // Default value if input is null or empty
+
+            int idx = 0;
+            do
+            {
+                char firstChar = char.ToUpper(input[idx]);
+                if (keyMap.ContainsKey(firstChar.ToString()))
+                {
+                    idx++;
+                    continue;
+                }
+                if (Enum.TryParse(firstChar.ToString(), out ConsoleKey key))
+                {
+                    keyMap.Add(firstChar.ToString(), key);
+                    return key;
+                }
+                idx++;
+
+            } while (idx < input.Length);
+            
+            return ConsoleKey.F1; // Default value if no valid ConsoleKey is found
+        }
+        public static Menu CreateReflectionMenu()
+        {
+            return ReflectionMenuCreator.CreateReflectionMenu();
+        }
 
         public Menu()
         {

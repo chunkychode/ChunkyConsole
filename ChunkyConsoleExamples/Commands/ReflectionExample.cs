@@ -6,22 +6,22 @@ namespace ChunkyConsoleExamples.Commands
 {
     class ReflectionExample : ChunkyConsole.Commands.ReflectionMenuPrompterCommand
     {
-        [ChunkyConsole.IncludeMethod]
-        public string MyFiledProperty { get; set; }
-        [ChunkyConsole.IncludeMethod]
+        [ChunkyConsole.IncludeProperty]
+        public string MyFileProperty { get; set; }
+        [ChunkyConsole.IncludeProperty]
         public string MyStringProperty { get; set; }
 
-        [ChunkyConsole.IncludeMethod]
+        [ChunkyConsole.IncludeProperty]
         public int MyIntProperty { get; set; }
 
-        [ChunkyConsole.IncludeMethod]
+        [ChunkyConsole.IncludeProperty]
         public decimal MyDecimalProperty { get; set; }
 
-        [ChunkyConsole.IncludeMethod]
+        [ChunkyConsole.IncludeProperty]
         public DateTime MyDateProperty { get; set; }
 
 
-        [ChunkyConsole.IncludeMethod(true)]
+        [ChunkyConsole.IncludeProperty(true)]
         public string MyPasswordProperty { get; set; }
 
 

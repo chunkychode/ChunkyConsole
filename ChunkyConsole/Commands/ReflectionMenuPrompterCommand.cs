@@ -44,17 +44,17 @@ namespace ChunkyConsole.Commands
             Func<PropertyInfo, string> GetV = new Func<PropertyInfo, string>(pp => {
                 try
                 {
-                    return pp.GetValue(this, null).ToString();
+                    return pp.GetValue(this, null)?.ToString();
                 }
                 catch { return ""; }
                 ;
             });
 
             foreach (var pr in (from m in this.GetType().GetProperties()
-                                let atts = m.GetCustomAttributes(typeof(IncludeMethodAttribute), false)
+                                let atts = m.GetCustomAttributes(typeof(IncludePropertyAttribute), false)
                                 where includeOnlyAttributedMembers ? (atts != null && atts.Count() > 0) : true
                                 let v = GetV(m)
-                                select new { va = v, pi = m, pwd = includeOnlyAttributedMembers ? (atts[0] as IncludeMethodAttribute).IsPassword : false }))
+                                select new { va = v, pi = m, pwd = includeOnlyAttributedMembers ? (atts[0] as IncludePropertyAttribute).IsPassword : false }))
             {
                 Add(pr.pi, this, pr.pwd, pr.va);
             }

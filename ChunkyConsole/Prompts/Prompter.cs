@@ -19,10 +19,14 @@ namespace ChunkyConsole.Prompts
         }
         public T Get<T>(int index)
         {
-            if (index < Count && this.Skip(index - 1).Take(1).FirstOrDefault().Validator != null)
-                return (this.Skip(index - 1).Take(1).FirstOrDefault().Validator as Validators.IValue<T>).Value;
+            if (index < Count && this.Skip(index).Take(1).FirstOrDefault().Validator != null)
+                return (this.Skip(index).Take(1).FirstOrDefault().Validator as Validators.IValue<T>).Value;
 
             throw new ArgumentException("Index must in range and validator may not be null");
+        }
+        public object GetByIndex(int index)
+        {
+            return this.Skip(index).Take(1).FirstOrDefault().UserValue;
         }
         public T Get<T>(string name)
         {
