@@ -1,4 +1,5 @@
-﻿using ChunkyConsole.UI;
+﻿using ChunkyConsole.Prompts;
+using ChunkyConsole.UI;
 using ChunkyConsoleExamples.Commands;
 using System;
 
@@ -6,6 +7,17 @@ class Program
 {
     static void Main(string[] args)
     {
+
+        var pr = new PromptItem<int>("What number");
+        Console.WriteLine($"{pr.PromptUser().UserValue} + 1 = {pr.UserValue+1}"   );
+        
+
+
+        var prDefault = new PromptItem("How old are you", "10");
+        Console.WriteLine($"{prDefault.PromptUser().UserValue}  = {prDefault.UserValue.GetType().FullName}");
+
+        Console.ReadLine();
+
         var m = Menu.CreateReflectionMenu();
         //Menu m = new Menu();
         //m.MenuItems.Add(new MenuItem() { Title = "Reflection Example", Key = ConsoleKey.D1, Command = new ReflectionExample() });

@@ -2,6 +2,7 @@
 using System;
 using System.Reflection;
 
+
 namespace ChunkyConsole.Validators
 {
     public class RegEx : NonBlankString
@@ -328,35 +329,67 @@ namespace ChunkyConsole.Validators
 
     public static class ValidatorFactory
     {
-        public static IValidator GetValidatorForParameter(ParameterInfo parameter)
+        public static IValidator GetValidatorForType(Type itemType)
         {
-            if (parameter.ParameterType == typeof(int))
+            if (itemType == typeof(int))
                 return new Int();
-            if (parameter.ParameterType == typeof(decimal))
+            if (itemType == typeof(decimal))
                 return new Decimal();
-            if (parameter.ParameterType == typeof(double))
+            if (itemType == typeof(double))
                 return new Double();
-            if (parameter.ParameterType == typeof(float))
+            if (itemType == typeof(float))
                 return new Float();
-            if (parameter.ParameterType == typeof(long))
+            if (itemType == typeof(long))
                 return new Long();
-            if (parameter.ParameterType == typeof(bool))
+            if (itemType == typeof(bool))
                 return new Bool();
-            if (parameter.ParameterType == typeof(System.DateTime))
+            if (itemType == typeof(System.DateTime))
                 return new ChunkyConsole.Validators.DateTime();
-            if (parameter.ParameterType == typeof(string))
+            if (itemType == typeof(string))
             {
-                if (parameter.Name.ToLower().Contains("email"))
+                if (itemType.Name.ToLower().Contains("email"))
                     return new RegEx(RegEx.EMAIL);
-                if (parameter.Name.ToLower().Contains("phone"))
+                if (itemType.Name.ToLower().Contains("phone"))
                     return new RegEx(RegEx.PHONENUMBER);
-                if (parameter.Name.ToLower().Contains("password"))
+                if (itemType.Name.ToLower().Contains("password"))
                     return new RegEx(RegEx.STRONGPWD);
                 return new NonBlankString();
             }
 
             // Default to AnyString if no specific validator is found
             return new AnyString();
+        }
+
+        public static IValidator GetValidatorForParameter(ParameterInfo parameter)
+        {
+            return GetValidatorForType(parameter.ParameterType);
+            //if (parameter.ParameterType == typeof(int))
+            //    return new Int();
+            //if (parameter.ParameterType == typeof(decimal))
+            //    return new Decimal();
+            //if (parameter.ParameterType == typeof(double))
+            //    return new Double();
+            //if (parameter.ParameterType == typeof(float))
+            //    return new Float();
+            //if (parameter.ParameterType == typeof(long))
+            //    return new Long();
+            //if (parameter.ParameterType == typeof(bool))
+            //    return new Bool();
+            //if (parameter.ParameterType == typeof(System.DateTime))
+            //    return new ChunkyConsole.Validators.DateTime();
+            //if (parameter.ParameterType == typeof(string))
+            //{
+            //    if (parameter.Name.ToLower().Contains("email"))
+            //        return new RegEx(RegEx.EMAIL);
+            //    if (parameter.Name.ToLower().Contains("phone"))
+            //        return new RegEx(RegEx.PHONENUMBER);
+            //    if (parameter.Name.ToLower().Contains("password"))
+            //        return new RegEx(RegEx.STRONGPWD);
+            //    return new NonBlankString();
+            //}
+
+            //// Default to AnyString if no specific validator is found
+            //return new AnyString();
         }
     }
 
